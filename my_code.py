@@ -2,7 +2,8 @@ import pytest
 
 def fix_phone_num(phone_num_to_fix):
   # given "5125558823". Split the parts, then recombine and return
-
+  if (phone_num_to_fix.isdigit()) == False:
+    raise ValueError
   
   area_code = phone_num_to_fix[0:3] # 512 (first three digits)
   three_part = phone_num_to_fix[3:6] # 555 (next three digits)
@@ -33,7 +34,7 @@ def test_fix_phone_num_formatted():
 
 def test_fix_phone_num_is_digits():
   with pytest.raises(ValueError):
-    phone_num_to_fix("abcd")
+    fix_phone_num("abcd")
 
 
 
